@@ -24,3 +24,10 @@ http://www.cnblogs.com/gbin1/p/4071193.html
 8.http://www.cnblogs.com/surahe/p/5974022.html
 
 9.https://github.com/rongbo-j/you-dont-know-js
+
+10.你不知道的JavaScript--大白话讲解Promise
+
+   http://www.cnblogs.com/huangyin1213/p/5868662.html
+   http://blog.csdn.net/Rongbo_J/article/category/3160809
+   
+11. http://blog.csdn.net/q121516340/article/details/51332454
