@@ -43,7 +43,7 @@ doSomething( 2 );
 //#4
 //What would be printed out to the console and exaplain why?
 //Your answer: opp
-//Your reason:
+//Your reason: 
 undefined = true; // NOTE: JUST AN EXAMPLE, DON'T DO THIS
 
 (function IIFE( undefined ){
@@ -60,7 +60,7 @@ undefined = true; // NOTE: JUST AN EXAMPLE, DON'T DO THIS
 
 //#5
 //What would be printed out to the console?
-//Your answer:
+//Your answer: 3 2
 var a = 2;
 
 (function IIFE( def ){
@@ -80,12 +80,16 @@ for (let i=0; i<3; i++) {
 }
 //What would be printed out in below line?
 console.log( i ); // Your answer:
+                   0 
+                   1 
+                   2 
+                   Uncaught ReferenceError: i is not defined
 
 
 //#7
 //What would be printed out to the console?
-console.log( a );  //Your answer:
-console.log( b ); //Your answer:
+console.log( a );  //Your answer:   undefined
+console.log( b ); //Your answer:    ReferenceError
 var a = 2;
 
 
@@ -104,7 +108,7 @@ function foo() {
 foo = function() {
     console.log( 2 );
 };
-//Your answer:
+//Your answer: 1
 
 
 //#9
@@ -118,8 +122,19 @@ if (a) {
 else {
     function foo() { console.log( "b" ); }
 }
+                   
+TypeError: foo is not a function
 
-
+if (a) {
+    function foo() { console.log( "a" ); }
+}
+else {
+    function foo() { console.log( "b" ); }
+}
+var a = true;                   
+foo();
+                   
+                   
 //#10
 //What would be printed out to the console? How many loops will be run?
 function foo() {
@@ -135,6 +150,8 @@ function foo() {
 
 foo();
 
+3 11 11 11 infinite 11
+
 
 //#11
 //What would be printed to the console?
@@ -145,11 +162,11 @@ var x = function () {
 
 function f() {
     var a = 2;
-    x();
+    x(); 
 }
-
 f()
 
+1  x() ---> x.call(null)
 
 //#12
 //Given the code below:
@@ -160,7 +177,7 @@ function f(p) {
 }
 f('a');
 //What would be printed out for the a variable?
-console.log(a) //your answer:
+console.log(a) //your answer: 2
 
 
 
@@ -176,7 +193,7 @@ var counter = {
 var func = counter.inc;
 func();
 //What would printed out to the console for counter.count?
-console.log(counter.count) //your answer:
+console.log(counter.count) //your answer: 0
 
 
 
@@ -185,7 +202,7 @@ console.log(counter.count) //your answer:
 var slice = Function.prototype.call.bind(Array.prototype.slice);
 
 //What is the result of slice([1, 2, 3], 0, 1) ?
-slice([1, 2, 3], 0, 1) //your answer:
+slice([1, 2, 3], 0, 1) //your answer: [1]
 
 
 //#15
@@ -194,7 +211,7 @@ function foo(x = 5) {
     let x = 1;
     const x = 2;
 }
-//Your answer:
+//Your answer: SyntaxError: Identifier 'x' has already been declared
 
 
 
@@ -205,10 +222,10 @@ function foo({x, y = 5}) {
 }
 
 //What would be printed out to the console for the following invocation?
-foo({}) //your answer:
-foo({x: 1}) //your answer:
-foo({x: 1, y: 2}) //your answer:
-foo() //your answer:
+foo({}) //your answer: undefined 5 
+foo({x: 1}) //your answer: 1 5 
+foo({x: 1, y: 2}) //your answer: 1 2
+foo() //your answer: TypeError: Cannot match against 'undefined' or 'null'.
 
 
 //#17
@@ -218,10 +235,10 @@ function fetch(url, { method = 'GET' } = {}) {
 }
 
 //What would be printed out to the console?
-fetch('http://example.com'); //your answer:
-fetch(); //your answer:
-fetch('http://example.com', { etag: 'abcdefg'}); //your answer:
-fetch('http://example.com', { method: 'POST'}); //your answer:
+fetch('http://example.com'); //your answer: GET
+fetch(); //your answer: GET
+fetch('http://example.com', { etag: 'abcdefg'}); //your answer: GET
+fetch('http://example.com', { method: 'POST'}); //your answer: GET
 
 
 //#18
@@ -230,9 +247,9 @@ function foo(x = 5, y = 6) {
     console.log(x, y);
 }
 //What would be printed out to the console?
-foo(undefined, null); //your answer:
-foo(null, null); //your answer
-foo(null, 10); //your answer
+foo(undefined, null); //your answer: 5 null
+foo(null, null); //your answer:null null
+foo(null, 10); //your answer null 10
 
 
 
@@ -244,7 +261,7 @@ function f(x, y = x) {
     console.log(y);
 }
 //What would be printed out to the console?
-f(2) //your answer:
+f(2) //your answer: 2 
 
 
 //#20
@@ -256,8 +273,8 @@ function foo(x, y = function() { x = 2; }) {
     console.log(x);
 }
 //What would be printed out to the console?
-foo() //your answer:
-console.log(x) //your answer
+foo() //your answer: 3
+console.log(x) //your answer 1 
 
 
 //#21
@@ -265,13 +282,13 @@ console.log(x) //your answer
 //your answer for "..." operator
 const [first, ...rest] = [1, 2, 3, 4, 5];
 //What would be the value for:
-first //your answer
-rest  //your answer
+first //your answer 1 
+rest  //your answer [2,3,4,5]
 
 //Below code is valid?  If not, why?
 //your answer:
 const [first, ...middle, last] = [1, 2, 3, 4, 5];
-
+SyntaxError: Rest element must be last element
 
 
 //#22
@@ -279,7 +296,7 @@ const [first, ...middle, last] = [1, 2, 3, 4, 5];
 let str = '<🚀>';
 
 function reverseString(s) {
-    //your implementation
+    return Array.from(str).reverse().join('');
 }
 //Write a function above to reverse the string.
 console.log(reverseString(str)); // ">🚀<"
@@ -309,8 +326,8 @@ function Timer() {
 
 var timer = new Timer();
 //What would be printed out to the console?
-setTimeout(() => console.log('s1: ', timer.s1), 3100); //your answer:
-setTimeout(() => console.log('s2: ', timer.s2), 3100); //your answer:
+setTimeout(() => console.log('s1: ', timer.s1), 3100); //your answer:   3
+setTimeout(() => console.log('s2: ', timer.s2), 3100); //your answer:   0
 
 
 
@@ -326,7 +343,7 @@ const subst = a => a - 1;
 const addThenMult = pipeline(plus1, mult2, subst);
 
 //What would be printed out to the console?
-console.log(addThenMult(10));  //your answer:
+console.log(addThenMult(10));  //your answer: 21
 
 
 
@@ -340,7 +357,7 @@ function foo(str, a) {
 var b = 2;
 
 //What would be printed to the console when invoking foo function below?
-foo( "var b = 3;", 1 ); //your answer:
+foo( "var b = 3;", 1 ); //your answer: 1 3
 
 
 
@@ -362,11 +379,11 @@ var o2 = {
 
 //What would be printed out to the console?
 foo( o1 );
-console.log( o1.a ); //your answer
+console.log( o1.a ); //your answer 2 
 
 foo( o2 );
-console.log( o2.a ); //your answer
-console.log( a ); //your answer
+console.log( o2.a ); //your answer undfined
+console.log( a ); //your answer 2 
 
 
 
@@ -380,7 +397,7 @@ for (var i=1; i<=5; i++) {
     })();
 }
 //What would be printed out to the console?
-//Your answer:
+//Your answer:  6 6 6 6 6
 
 
 
@@ -397,9 +414,11 @@ var id = "global id";
 
 
 //What would be printed out to the console for following invocation?
-obj.cool(); //your answer:
+obj.cool(); //your answer: object id
 
-setTimeout( obj.cool, 100 ); //your answer:
+setTimeout( obj.cool, 100 ); //your answer:   
+ 
+ obj.cool.apply(null)
 
 
 
@@ -420,8 +439,8 @@ var obj = {
 };
 
 //What would be printed out to the console for obj.count?
-obj.cool();
-setTimeout( () => { console.log(obj.count); }, 200);  //your answer
+obj.cool(); 
+setTimeout( () => { console.log(obj.count); }, 200);  //your answer  1 
 
 
 //What if call the cool function like below, what would be printed out to the console?
